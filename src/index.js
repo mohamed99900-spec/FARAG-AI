@@ -1,5 +1,24 @@
 require("dotenv").config();
+// Render Web Service health server
+const httpServer = require("node:http").createServer((req, res) => {
+  if (req.url === "/health") {
+    res.writeHead(200, { "Content-Type": "application/json" });
+    res.end(JSON.stringify({
+      status: "ok",
+      bot: "FARAG AI"
+    }));
+    return;
+  }
 
+  res.writeHead(200, { "Content-Type": "text/plain; charset=utf-8" });
+  res.end("FARAG AI is running!");
+});
+
+const PORT = Number(process.env.PORT || 10000);
+
+httpServer.listen(PORT, "0.0.0.0", () => {
+  console.log(`🌐 HTTP server listening on port ${PORT}`);
+});
 const { Telegraf, Markup } = require("telegraf");
 const db = require("./db");
 const { askAI } = require("./ai");
