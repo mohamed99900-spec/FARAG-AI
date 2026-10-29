@@ -1,0 +1,21 @@
+{
+  "name": "farag-ai",
+  "version": "2.0.0",
+  "private": true,
+  "description": "FARAG AI - Telegram group and channel management",
+  "main": "src/index.js",
+  "type": "commonjs",
+  "engines": {
+    "node": ">=20"
+  },
+  "scripts": {
+    "start": "node src/index.js",
+    "dev": "node --watch src/index.js",
+    "check": "node --check src/index.js && node --check src/db.js && node --check src/ai.js && node --check src/keyboards.js && node --check src/moderation.js"
+  },
+  "dependencies": {
+    "better-sqlite3": "^12.11.1",
+    "dotenv": "^16.4.7",
+    "telegraf": "^4.16.3"
+  }
+}
